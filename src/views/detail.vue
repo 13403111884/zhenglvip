@@ -1,25 +1,5 @@
 <template>
   <div id="detail">
-    <ul>
-      <li class="item">
-        <span class="name b">名称</span>
-        <span class="result b">结果</span>
-      </li>
-      <li class="item" v-for="(value, key, index) of _filter(res.item)">
-        <template v-if="key === 'address'">
-          <span class="name">{{key}}</span>
-          <a :href="value" target="_blank" class="result">{{value}}</a>
-        </template>
-        <template v-else>
-          <span class="name">{{key}}</span>
-          <span class="result">{{value}}</span>
-        </template>
-      </li>
-      <li class="item" v-if="Object.keys(res.item).length === 0">
-        <span class="name">暂无数据</span>
-        <span class="result">暂无数据</span>
-      </li>
-    </ul>
     <!-- 分页 -->
     <div class="paganation">
       <span class="item" @click="handerFirstPage">第一页</span>

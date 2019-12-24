@@ -1,66 +1,120 @@
 const projectList = [
   {
     id: 1,
-    name: 'blog',
-    address: 'https://neveryu.github.io/index.html',
-    author: 'Yu',
-    description: '使用GitPage搭建的博客'
+    contactPerson: 'blog',
+    customerName: 'https://neveryu.github.io/index.html',
+    contactNumber: 'Yu',
+    area: '使用GitPage搭建的博客',
+    industry: 'dadad',
+    closingTime: '78878798798798',
+    haveDoneBusiness: 'asfdasdfg',
+    contractSum: 123,
+    profit: 222,
+    remarks: 'bkmnb,m'
   },
   {
     id: 2,
-    name: '用vue写的一个外卖app',
-    address: 'https://git.io/fhpw4',
-    author: 'Yu',
-    description: 'vue构建的移动端外卖app'
+    contactPerson: 'blog',
+    customerName: 'https://neveryu.github.io/index.html',
+    contactNumber: 'Yu',
+    area: '使用GitPage搭建的博客',
+    industry: 'dadad',
+    closingTime: '78878798798798',
+    haveDoneBusiness: 'asfdasdfg',
+    contractSum: 123,
+    profit: 222,
+    remarks: 'bkmnb,m'
   },
   {
     id: 3,
-    name: '用vue构建的一个后台管理系统',
-    address: 'https://git.io/fp9UM',
-    author: 'Yu',
-    description: 'vue构建的一个后台管理系统'
+    contactPerson: 'blog',
+    customerName: 'https://neveryu.github.io/index.html',
+    contactNumber: 'Yu',
+    area: '使用GitPage搭建的博客',
+    industry: 'dadad',
+    closingTime: '78878798798798',
+    haveDoneBusiness: 'asfdasdfg',
+    contractSum: 123,
+    profit: 222,
+    remarks: 'bkmnb,m'
   },
   {
     id: 4,
-    name: '用vue写的一个音乐app',
-    address: 'https://git.io/fhnor',
-    author: 'Yu',
-    description: 'vue构建的移动端音乐app'
+    contactPerson: 'blog',
+    customerName: 'https://neveryu.github.io/index.html',
+    contactNumber: 'Yu',
+    area: '使用GitPage搭建的博客',
+    industry: 'dadad',
+    closingTime: '78878798798798',
+    haveDoneBusiness: 'asfdasdfg',
+    contractSum: 123,
+    profit: 222,
+    remarks: 'bkmnb,m'
   },
   {
     id: 5,
-    name: 'vue的预渲染实例',
-    address: 'https://git.io/fp8xw',
-    author: 'Yu',
-    description: '一个vue预渲染示例'
+    contactPerson: 'blog',
+    customerName: 'https://neveryu.github.io/index.html',
+    contactNumber: 'Yu',
+    area: '使用GitPage搭建的博客',
+    industry: 'dadad',
+    closingTime: '78878798798798',
+    haveDoneBusiness: 'asfdasdfg',
+    contractSum: 123,
+    profit: 222,
+    remarks: 'bkmnb,m'
   },
   {
     id: 6,
-    name: 'vue服务端渲染实例',
-    address: 'https://github.com/Neveryu/vue-ssr-lessons',
-    author: 'Yu',
-    description: 'vue ssr 实例'
+    contactPerson: 'blog',
+    customerName: 'https://neveryu.github.io/index.html',
+    contactNumber: 'Yu',
+    area: '使用GitPage搭建的博客',
+    industry: 'dadad',
+    closingTime: '78878798798798',
+    haveDoneBusiness: 'asfdasdfg',
+    contractSum: 123,
+    profit: 222,
+    remarks: 'bkmnb,m'
   },
   {
     id: 7,
-    name: 'CSDN',
-    address: 'https://blog.csdn.net/csdn_yudong',
-    author: 'Yu',
-    description: '我的csdn博客'
+    contactPerson: 'blog',
+    customerName: 'https://neveryu.github.io/index.html',
+    contactNumber: 'Yu',
+    area: '使用GitPage搭建的博客',
+    industry: 'dadad',
+    closingTime: '78878798798798',
+    haveDoneBusiness: 'asfdasdfg',
+    contractSum: 123,
+    profit: 222,
+    remarks: 'bkmnb,m'
   },
   {
     id: 8,
-    name: '我的主页',
-    address: 'https://neveryu.github.io/neveryu/index.html',
-    author: 'Yu',
-    description: '个人主页'
+    contactPerson: 'blog',
+    customerName: 'https://neveryu.github.io/index.html',
+    contactNumber: 'Yu',
+    area: '使用GitPage搭建的博客',
+    industry: 'dadad',
+    closingTime: '78878798798798',
+    haveDoneBusiness: 'asfdasdfg',
+    contractSum: 123,
+    profit: 222,
+    remarks: 'bkmnb,m'
   },
   {
     id: 9,
-    name: '我的 GitHub',
-    address: 'https://github.com/Neveryu',
-    author: 'Yu',
-    description: '托管一些我的项目代码'
+    contactPerson: 'blog',
+    customerName: 'https://neveryu.github.io/index.html',
+    contactNumber: 'Yu',
+    area: '使用GitPage搭建的博客',
+    industry: 'dadad',
+    closingTime: '78878798798798',
+    haveDoneBusiness: 'asfdasdfg',
+    contractSum: 123,
+    profit: 222,
+    remarks: 'bkmnb,m'
   }
 ]
 

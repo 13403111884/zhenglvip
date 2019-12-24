@@ -18,10 +18,6 @@ export function createRouter() {
         component: () => import('../views/home.vue')
       },
       {
-        path: '/project',
-        component: () => import('../views/project.vue')
-      },
-      {
         path: '/list',
         component: () => import('../views/list.vue')
       },

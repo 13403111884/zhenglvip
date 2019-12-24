@@ -1,10 +1,6 @@
 <template>
   <div id="list">
-    <ul>
-      <li class="item" v-for="(item, index) of projectList">
-        <router-link class="link" :to='"/detail/" + item.id'>{{ item.name }}</router-link>
-      </li>
-    </ul>
+    列表
   </div>
 </template>
 
