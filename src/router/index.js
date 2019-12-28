@@ -15,15 +15,15 @@ export function createRouter() {
       },
       {
         path: '/home',
-        component: () => import('../views/home.vue')
+        component: () => import(/* webpackChunkName: "index" */ '../views/home.vue')
       },
       {
         path: '/list',
-        component: () => import('../views/list.vue')
+        component: () => import(/* webpackChunkName: "index" */ '../views/list.vue')
       },
       {
         path: '/detail/:id(\\d+)?',
-        component: () => import('../views/detail.vue')
+        component: () => import(/* webpackChunkName: "index" */ '../views/detail.vue')
       }
     ]
   })
