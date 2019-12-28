@@ -6,19 +6,14 @@ import getters from './getters'
 
 Vue.use(Vuex)
 
-export function createStore() {
+export function createStore () {
   return new Vuex.Store({
     state: {
-      totalRegister: 0,
-      totalActiver: 0,
-      topMouthActiver: 0,
-      todayLogin: 0,
-      projectList: [],
-      detail: {},
-      totalCount: 0
+      movie: {}
     },
     actions,
     mutations,
-    getters
+    getters,
+    modules: {}
   })
 }

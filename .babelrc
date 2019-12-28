@@ -1,12 +1,5 @@
 {
-  "presets": [
-    ["env", {
-      "modules": false,
-      "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-    }]
-  ],
   "plugins": [
-    "syntax-dynamic-import",
-    "transform-object-rest-spread"
+    "@babel/plugin-syntax-dynamic-import"
   ]
 }

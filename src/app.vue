@@ -1,23 +1,14 @@
 <template>
-  <div id="app">
-    <header class="header">
-      <router-link to="/home">Home</router-link>
-      <router-link to="/list">List</router-link>
-    </header>
-    <transition name="fade" mode="out-in">
-      <router-view class="view"></router-view>
-    </transition>
-    <my-footer></my-footer>
+  <div>
+    <router-link :to="{ name: 'A' }" v-text="'to A'"/>
+    <router-link :to="{ name: 'B' }" v-text="'to B'"/>
+    <router-view/>
   </div>
 </template>
+
 <script>
-import MyFooter from './components/footer.vue'
 export default {
-  components: {
-    MyFooter
-  }
+  name: 'App',
+  methods: {}
 }
 </script>
-<style lang="stylus">
-
-</style>
