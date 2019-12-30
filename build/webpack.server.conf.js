@@ -12,7 +12,7 @@ module.exports = merge(baseWebpackConfig, {
   entry: path.join(__dirname, '../src/entry-server.js'),
   output: {
     libraryTarget: 'commonjs2',
-    filename: 'server-bundle.js',
+    filename: 'server-bundle.js'
   },
   externals: nodeExternals({
     whitelist: /\.css$/

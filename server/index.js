@@ -6,7 +6,7 @@ const LRU = require('lru-cache')
 const send = require('koa-send')
 const Router = require('koa-router')
 const setupDevServer = require('../build/setup-dev-server')
-const { createBundleRenderer, createRenderer } = require('vue-server-renderer')
+const { createBundleRenderer } = require('vue-server-renderer')
 
 // 缓存
 const microCache = LRU({
@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
   })
   // 静态资源
   router.get('/static/*', async (ctx, next) => {
-    await send(ctx, ctx.path, { root: __dirname + '/../dist' });
+    await send(ctx, ctx.path, { root: `${__dirname}/../dist` })
   })
 } else {
   // 开发环境
@@ -57,7 +57,6 @@ if (process.env.NODE_ENV === 'production') {
   }
   )
 }
-
 
 const render = async (ctx, next) => {
   ctx.set('Content-Type', 'text/html')
@@ -84,6 +83,7 @@ const render = async (ctx, next) => {
     const hit = microCache.get(ctx.url)
     if (hit) {
       console.log('从缓存中取', hit)
+      // eslint-disable-next-line no-return-assign
       return ctx.body = hit
     }
   }
@@ -106,8 +106,6 @@ router.get('*', render)
 app
   .use(router.routes())
   .use(router.allowedMethods())
-
-
 
 const port = process.env.PORT || 3000
 app.listen(port, () => {

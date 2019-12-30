@@ -6,9 +6,6 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
-const HOST = process.env.HOST
-const PORT = process.env.PORT && Number(process.env.PORT)
-
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   entry: {

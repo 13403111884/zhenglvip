@@ -1,4 +1,3 @@
-const path = require('path')
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
@@ -23,6 +22,13 @@ const pordWebpackConfig = merge(baseWebpackConfig, {
     })
   },
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
+  // 优化相关, 暂时占个位置
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all'
+  //   },
+  //   runtimeChunk: true
+  // },
   plugins: [
     // webpack4.0版本以上采用MiniCssExtractPlugin 而不使用extract-text-webpack-plugin
     new MiniCssExtractPlugin({
@@ -31,14 +37,7 @@ const pordWebpackConfig = merge(baseWebpackConfig, {
     }),
     //  当vendor模块不再改变时, 根据模块的相对路径生成一个四位数的hash作为模块id
     new webpack.HashedModuleIdsPlugin()
-  ],
-  // 优化相关, 暂时占个位置
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all'
-  //   },
-  //   runtimeChunk: true
-  // },
+  ]
 })
 
 module.exports = pordWebpackConfig

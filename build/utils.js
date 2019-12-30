@@ -90,7 +90,7 @@ exports.createNotifierCallback = () => {
     notifier.notify({
       title: packageConfig.name,
       message: severity + ': ' + error.name,
-      subtitle: filename || '',
+      subtitle: filename || ''
     })
   }
 }
