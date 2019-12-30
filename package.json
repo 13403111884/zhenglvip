@@ -1,5 +1,5 @@
 {
-  "name": "webpack-vue-ssr",
+  "name": "zhenglv",
   "version": "1.0.0",
   "main": "server/index.js",
   "repository": "",
@@ -61,6 +61,7 @@
     "koa": "^2.5.3",
     "koa-router": "^7.4.0",
     "koa-send": "^5.0.0",
+    "opener": "^1.5.1",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
     "vue-server-renderer": "^2.5.17",

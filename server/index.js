@@ -1,7 +1,8 @@
 const fs = require('fs')
 const Koa = require('koa')
 const path = require('path')
-const chalk = require('chalk')
+// const chalk = require('chalk')
+const Opener = require('opener')
 const LRU = require('lru-cache')
 const send = require('koa-send')
 const Router = require('koa-router')
@@ -17,7 +18,6 @@ const microCache = LRU({
 const isCacheable = ctx => {
   // 实现逻辑为，检查请求是否是用户特定(user-specific)。
   // 只有非用户特定(non-user-specific)页面才会缓存
-  console.log(ctx.url)
   if (ctx.url === '/b') {
     return true
   }
@@ -49,7 +49,6 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   // 开发环境
   setupDevServer(app, templatePath, (bundle, options) => {
-    console.log('重新bundle~~~~~')
     const option = Object.assign({
       runInNewContext: false
     }, options)
@@ -68,8 +67,6 @@ const render = async (ctx, next) => {
     } else {
       ctx.status = 500
       ctx.body = '500 Internal Server Error'
-      console.error(`error during render : ${ctx.url}`)
-      console.error(err.stack)
     }
   }
 
@@ -82,7 +79,6 @@ const render = async (ctx, next) => {
   if (cacheable) {
     const hit = microCache.get(ctx.url)
     if (hit) {
-      console.log('从缓存中取', hit)
       // eslint-disable-next-line no-return-assign
       return ctx.body = hit
     }
@@ -92,7 +88,6 @@ const render = async (ctx, next) => {
     const html = await renderer.renderToString(context)
     ctx.body = html
     if (cacheable) {
-      console.log('设置缓存: ', ctx.url)
       microCache.set(ctx.url, html)
     }
   } catch (error) {
@@ -108,6 +103,7 @@ app
   .use(router.allowedMethods())
 
 const port = process.env.PORT || 3000
-app.listen(port, () => {
-  console.log(chalk.green(`server started at localhost:${port}`))
+const host = process.env.HOST || '0.0.0.0'
+app.listen(port, host, () => {
+  process.env.NODE_ENV !== 'production' && Opener(`http://127.0.0.1:${port}`)
 })

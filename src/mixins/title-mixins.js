@@ -7,7 +7,7 @@ function getTitle (vm) {
       ? title.call(vm)
       : title
   } else {
-    return 'Vue SSR Demo'
+    return '正律'
   }
 }
 
