@@ -1,13 +1,15 @@
 const fs = require('fs')
 const Koa = require('koa')
 const path = require('path')
-// const chalk = require('chalk')
-const Opener = require('opener')
+const chalk = require('chalk')
 const LRU = require('lru-cache')
 const send = require('koa-send')
 const Router = require('koa-router')
 const setupDevServer = require('../build/setup-dev-server')
 const { createBundleRenderer } = require('vue-server-renderer')
+const publicIp = require('public-ip')
+const internalIp = require('internal-ip')
+const requestIp = require('request-ip')
 
 // 缓存
 const microCache = LRU({
@@ -101,9 +103,20 @@ router.get('*', render)
 app
   .use(router.routes())
   .use(router.allowedMethods())
+  .use(requestIp.mw())
+  .use(function (req, res) {
+    const ip = req.clientIp
+    res.end(ip)
+  })
 
 const port = process.env.PORT || 3000
 const host = process.env.HOST || '0.0.0.0'
 app.listen(port, host, () => {
-  process.env.NODE_ENV !== 'production' && Opener(`http://127.0.0.1:${port}`)
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(chalk.blue(`本地地址: http://localhost:${port}`))
+    console.log(chalk.blue(`内网地址: http://${internalIp.v4.sync()}:${port}`))
+    publicIp.v4().then((ip) => {
+      console.log(chalk.blue(`公网地址: http://${ip}:${port}`))
+    })
+  }
 })

@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import { createApp } from './app'
+import ProgressBar from './components/progressbar/index.vue'
+
+const bar = Vue.prototype.$bar = new Vue(ProgressBar).$mount()
+document.body.appendChild(bar.$el)
 
 Vue.mixin({
   beforeRouteUpdate (to, from, next) {
@@ -36,12 +40,15 @@ router.onReady(() => {
     if (!activated.length) {
       return next()
     }
+
+    bar.start()
     // 这里如果有加载指示器(loading indicator)，就触发
     Promise.all(activated.map(c => {
       if (c.asyncData) {
         return c.asyncData({ store, route: to })
       }
     })).then(() => {
+      bar.finish()
       // 停止加载指示器(loading indicator)
       next()
     }).catch(next)
