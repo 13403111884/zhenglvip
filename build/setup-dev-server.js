@@ -66,8 +66,9 @@ module.exports = function setupDevServer (app, templatePath, cb) {
     update()
   })
 
+  const newLocal = webpackHotMiddleware(clientCompiler)
   // 插入Koa中间件(模块热替换)
-  app.use(webpackHotMiddleware(clientCompiler))
+  app.use(newLocal)
 
   const serverCompiler = webpack(serverConfig)
   const mfs = new MFS()

@@ -2,8 +2,8 @@
 
 <template>
   <div class="progress" :style="{
-    'width': percent + '%',
-    'height': height,
+    'width': `${percent}%`,
+    'height': `${height}px`,
     'background-color': canSuccess ? color : failedColor,
     'opacity': show ? 1 : 0
   }"></div>
@@ -17,7 +17,7 @@ export default {
       show: false,
       canSuccess: true,
       duration: 3000,
-      height: '3px',
+      height: 3,
       color: '#42b983',
       failedColor: '#ff0000'
     }
@@ -95,7 +95,6 @@ export default {
   height 3px
   width 0%
   transition width .2s, opacity .4s
-  opacity 1
   background-color #efc14e
   z-index 9999
 </style>
