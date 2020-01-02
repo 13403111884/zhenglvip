@@ -1,4 +1,4 @@
-import LoadingComponent from './modules/Loading'
+import LoadingComponent from './modules/loading'
 
 let showLoading = false
 let loadingNode = null

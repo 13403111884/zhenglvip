@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .spinner{
   width: 100vw;
   height: 100vh;
@@ -30,45 +30,51 @@ export default {
   left: 0;
   background-color: rgba(255, 255, 255, .9);
   z-index: 999;
-  div{
-    margin-top: px2rem(-40);
-    margin-left: px2rem(-65);
-    position: absolute;
-    left: 50%;
-    top: 40%;
-    width: px2rem(80);
-    height: px2rem(130);
-    ul {
-      width: px2rem(80);
-      height: px2rem(100);
-      text-align: center;
-      font-size: px2rem(20);
-      li {
-        background-color: #67CF22;
-        height: 100%;
-        width: px2rem(9);
-        display: inline-block;
-        -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
-        animation: stretchdelay 1.2s infinite ease-in-out;
-        &:nth-child(2){
-          -webkit-animation-delay: -1.1s;
-          animation-delay: -1.1s;
-        }
-        &:nth-child(3){
-          -webkit-animation-delay: -1.0s;
-          animation-delay: -1.0s;
-        }
-        &:nth-child(4){
-          -webkit-animation-delay: -0.9s;
-          animation-delay: -0.9s;
-        }
-        &:nth-child(5){
-          -webkit-animation-delay: -0.8s;
-          animation-delay: -0.8s;
-        }
-      }
-    }
-  }
+}
+.spinner div{
+  margin-top: px2rem(-40);
+  margin-left: px2rem(-65);
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: px2rem(80);
+  height: px2rem(130);
+}
+
+.spinner div ul {
+  width: px2rem(80);
+  height: px2rem(100);
+  text-align: center;
+  font-size: px2rem(20);
+}
+
+.spinner div ul li {
+  background-color: #67CF22;
+  height: 100%;
+  width: px2rem(9);
+  display: inline-block;
+  -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+  animation: stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner div ul li:nth-child(2){
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner div ul li:nth-child(3){
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.spinner div ul li:nth-child(4){
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner div ul li:nth-child(5){
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
 }
 
 @-webkit-keyframes stretchdelay {
