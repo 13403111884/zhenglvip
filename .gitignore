@@ -1,5 +1,7 @@
+.DS_Store
 node_modules/
 dist/
-server-dist/
-server-build
-.DS_Store
+npm-debug.log
+yarn-error.log
+.idea
+*.iml

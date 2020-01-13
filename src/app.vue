@@ -1,14 +1,24 @@
 <template>
-  <div>
-    <router-link :to="{ name: 'A' }" v-text="'to A'"/>
-    <router-link :to="{ name: 'B' }" v-text="'to B'"/>
-    <router-view/>
+  <div id="app" style="height:100%;background:#ebf0f5;">
+    <adminHeader></adminHeader>
+    <leftNav></leftNav>
+    <adminContent></adminContent>
   </div>
 </template>
 
+<style lang="scss" scoped>
+  @import './assets/index.scss';
+</style>
 <script>
-export default {
-  name: 'App',
-  methods: {}
-}
+  import adminHeader from './views/header.vue';
+  import leftNav from './views/leftNavigation.vue';
+  import adminContent from './views/adminContent.vue';
+  export default{
+    name: 'app',
+    components: {
+      adminHeader,
+      leftNav,
+      adminContent
+    },
+  }
 </script>
