@@ -27,6 +27,7 @@
                         icon_class: 'btn-user-manage',
                         text: '用户管理',
                         router: {
+                            path: '/userManage',
                             name: 'userManage',
                             homepagename: 'userManage'
                         },
@@ -36,6 +37,7 @@
                         icon_class: 'btn-teacher-manage',
                         text: '电影管理',
                         router: {
+                            path: '/movieManage',
                             name: 'movieManage',
                             homepagename: 'movieManage'
                         },
@@ -47,6 +49,7 @@
                         icon_class: 'btn-homework-manage',
                         text: '数据分析',
                         router: {
+                            path: '/dataAnalysis',
                             name: 'dataAnalysis',
                             homepagename: 'dataAnalysis'
                         },

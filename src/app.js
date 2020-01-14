@@ -7,40 +7,24 @@ import titleMixin from './util/title'
 import * as filters from './util/filters'
 import 'element-ui/lib/theme-chalk/index.css';
 
-import { Button } from 'view-design'
+import { Button, Table, Modal, Menu, Submenu, MenuItem, MenuGroup } from 'view-design'
 import 'view-design/dist/styles/iview.css'
 Vue.component('Button', Button)
+Vue.component('Table', Table)
+Vue.component('Menu', Menu)
+Vue.component('Submenu', Submenu)
+Vue.component('MenuItem', MenuItem)
+Vue.component('MenuGroup', MenuGroup)
+
+Vue.prototype.$Modal = Modal
 
 import {
-  // Button,
-  Menu,
-  Submenu,
-  MenuItem,
-  MenuItemGroup,
-  Dialog,
-  Table,
-  TableColumn,
-  MessageBox,
-  Message,
-  Pagination,
-  Loading,
+  
 } from 'element-ui';
 
-Vue.use(Button);
 Vue.use(Menu);
 Vue.use(Submenu);
 Vue.use(MenuItem);
-Vue.use(MenuItemGroup);
-Vue.use(Dialog);
-Vue.use(Table);
-Vue.use(TableColumn);
-Vue.use(Pagination);
-
-Vue.use(Loading.directive);
-
-Vue.prototype.$alert = MessageBox.alert;
-Vue.prototype.$confirm = MessageBox.confirm;
-Vue.prototype.$message = Message;
 
 // mixin for handling title
 Vue.mixin(titleMixin)
