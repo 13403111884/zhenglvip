@@ -1,5 +1,5 @@
 <template>
-  <div id="app" style="height:100%;background:#ebf0f5;">
+  <div id="app">
     <adminHeader></adminHeader>
     <leftNav></leftNav>
     <adminContent></adminContent>
@@ -9,6 +9,7 @@
 <style lang="scss" scoped>
   @import './assets/index.scss';
 </style>
+
 <script>
   import adminHeader from './views/header.vue';
   import leftNav from './views/leftNavigation.vue';
@@ -19,6 +20,6 @@
       adminHeader,
       leftNav,
       adminContent
-    },
+    }
   }
 </script>
