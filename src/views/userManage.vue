@@ -1,22 +1,20 @@
 <template>
-  <div
-    class="admin-usermg"
-    v-loading="loading"
-    element-loading-text="拼命加载中"
-    element-loading-spinner="el-icon-loading"
-  >
-    <div class="admin-usermg__top">用户数据管理</div>
-    <div class="admin-usermg__button">
-      <Button type="primary" size="mini" @click="handleClick">导入用户数据集</Button>
-      <Button type="primary" size="mini" @click="handleClick">新建用户</Button>
-      <Button type="primary" size="mini" @click="handleClick">删除用户</Button>
+  <div>
+    <div>用户数据管理</div>
+    <div class="button">
+      <Button type="primary" size="small" @click="handleClick">导入用户数据集</Button>
+      <Button type="primary" size="small" @click="handleClick">新建用户</Button>
+      <Button type="primary" size="small" @click="handleClick">删除用户</Button>
     </div>
     <Table border :columns="columns7" :data="data6"></Table>
   </div>
 </template>
 <style lang="scss">
-@import "../assets/manage.scss";
-@import "../assets/el-table.scss";
+.button {
+  button{
+    margin-right: 10px;
+  }
+}
 </style>
 
 <script>

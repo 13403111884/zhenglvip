@@ -1,13 +1,12 @@
 <template>
-  <div class="admin-usermg">
-    <div class="admin-usermg__top">电影类别统计</div>
-    <div id="dataBar" class="analysis__layout">
+  <div>
+    <div>电影类别统计</div>
+    <div id="dataBar">
       <img :src="item" v-for="(item, index) of analysisList" :key="index" />>
     </div>
   </div>
 </template>
 <style lang="scss">
-@import "../assets/dataAnalysis.scss";
 </style>
 <script>
 import { mapGetters } from "vuex";

@@ -1,9 +1,5 @@
 <template>
   <div class="admin-left">
-    <div>
-      <img src="../img/logo.png" alt="support.ruijie.com.cn" />
-      <span class="left__font">后台管理</span>
-    </div>
     <menucontainer :items="items"></menucontainer>
   </div>
 </template>

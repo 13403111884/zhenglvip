@@ -1,23 +1,15 @@
 <template>
-  <div
-    class="admin-usermg"
-    v-loading="loading"
-    element-loading-text="拼命加载中"
-    element-loading-spinner="el-icon-loading"
-  >
-    <div class="admin-usermg__top">电影数据管理</div>
-    <div class="admin-usermg__button">
-      <Button type="primary" size="mini" @click="handleClick">导入电影数据集</Button>
-      <Button type="primary" size="mini" @click="handleClick">新建电影</Button>
-      <Button type="primary" size="mini" @click="handleClick">删除电影</Button>
+  <div>
+    <div>电影数据管理</div>
+    <div class="button">
+      <Button type="primary" size="small" @click="handleClick">导入电影数据集</Button>
+      <Button type="primary" size="small" @click="handleClick">新建电影</Button>
+      <Button type="primary" size="small" @click="handleClick">删除电影</Button>
     </div>
     <Table border :columns="columns7" :data="data6"></Table>
   </div>
 </template>
-<style lang="scss">
-@import "../assets/manage.scss";
-@import "../assets/el-table.scss";
-</style>
+
 <script>
 import { mapGetters } from "vuex";
 export default {
@@ -136,3 +128,11 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.button {
+  button{
+    margin-right: 10px;
+  }
+}
+</style>

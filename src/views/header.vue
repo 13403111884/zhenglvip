@@ -19,6 +19,9 @@
 </template>
 <style lang="scss" scoped>
 @import "../assets/head.scss";
+.admin-head__top{
+    border-bottom: 1px solid #ccc;
+}
 </style>
 <script>
 export default {

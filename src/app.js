@@ -5,29 +5,12 @@ import { createRouter } from './router'
 import { sync } from 'vuex-router-sync'
 import titleMixin from './util/title'
 import * as filters from './util/filters'
-import 'element-ui/lib/theme-chalk/index.css';
-
-import { Button, Table, Modal, Menu, Submenu, MenuItem, MenuGroup } from 'view-design'
+import Iview from './util/iview'
 import 'view-design/dist/styles/iview.css'
-Vue.component('Button', Button)
-Vue.component('Table', Table)
-Vue.component('Menu', Menu)
-Vue.component('Submenu', Submenu)
-Vue.component('MenuItem', MenuItem)
-Vue.component('MenuGroup', MenuGroup)
-
-Vue.prototype.$Modal = Modal
-
-import {
-  
-} from 'element-ui';
-
-Vue.use(Menu);
-Vue.use(Submenu);
-Vue.use(MenuItem);
 
 // mixin for handling title
 Vue.mixin(titleMixin)
+Vue.use(Iview)
 
 // register global utility filters.
 Object.keys(filters).forEach(key => {

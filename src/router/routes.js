@@ -1,6 +1,6 @@
-const DataAnalysis = () => import('../views/dataAnalysis.vue')
-const UserManage = () => import('../views/userManage.vue')
-const MovieManage = () => import('../views/movieManage.vue')
+const DataAnalysis = () => import(/* webpackChunkName: "group-foo" */ '../views/dataAnalysis.vue')
+const UserManage = () => import(/* webpackChunkName: "group-foo" */ '../views/userManage.vue')
+const MovieManage = () => import(/* webpackChunkName: "group-foo" */ '../views/movieManage.vue')
 
 export default [
   {
