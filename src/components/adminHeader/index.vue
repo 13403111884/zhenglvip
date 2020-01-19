@@ -2,13 +2,13 @@
   <div class="admin-head__top">
     <div class="admin-head__setting">
       <a>
-        <img class="admin-head__img" src="../img/logout.png" />
+        <img class="admin-head__img" src="./../../img/logout.png" />
         <span>退出</span>
       </a>
     </div>
     <div class="admin-head__password">
       <a>
-        <img class="admin-head__img" src="../img/key.png" />
+        <img class="admin-head__img" src="./../../img/key.png" />
         <span>修改密码</span>
       </a>
     </div>
@@ -18,13 +18,13 @@
   </div>
 </template>
 <style lang="scss" scoped>
-@import "../assets/head.scss";
+@import "./../../assets/head.scss";
 .admin-head__top{
     border-bottom: 1px solid #ccc;
 }
 </style>
 <script>
 export default {
-  name: "header1"
-};
+  name: "adminHeader"
+}
 </script>

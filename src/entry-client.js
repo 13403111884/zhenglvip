@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import 'es6-promise/auto'
 import { createApp } from './app'
-import ProgressBar from './components/ProgressBar.vue'
+import ProgressBar from './components/ProgressBar'
 
 // 路由切换时，页面数据加载指示器
 const bar = Vue.prototype.$bar = new Vue(ProgressBar).$mount()

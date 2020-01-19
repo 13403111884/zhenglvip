@@ -1,11 +1,6 @@
 <template>
   <div>
     <div>用户数据管理</div>
-    <div class="button">
-      <Button type="primary" size="small" @click="handleClick">导入用户数据集</Button>
-      <Button type="primary" size="small" @click="handleClick">新建用户</Button>
-      <Button type="primary" size="small" @click="handleClick">删除用户</Button>
-    </div>
     <Table border :columns="columns7" :data="data6"></Table>
   </div>
 </template>

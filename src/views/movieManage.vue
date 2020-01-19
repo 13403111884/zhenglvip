@@ -1,11 +1,6 @@
 <template>
   <div>
     <div>电影数据管理</div>
-    <div class="button">
-      <Button type="primary" size="small" @click="handleClick">导入电影数据集</Button>
-      <Button type="primary" size="small" @click="handleClick">新建电影</Button>
-      <Button type="primary" size="small" @click="handleClick">删除电影</Button>
-    </div>
     <Table border :columns="columns7" :data="data6"></Table>
   </div>
 </template>

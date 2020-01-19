@@ -1,24 +1,47 @@
 <template>
-  <div class="admin-left">
-    <menucontainer :items="items"></menucontainer>
+  <div>
+    <Menu theme="dark" :active-name="activeIndex" :open-names="['0']" width="auto">
+      <Submenu
+        v-if="item.hasSubMenu"
+        v-for="(item,index) in items"
+        :name="String(item.index)"
+        :key="index"
+      >
+        <template slot="title">
+          <i :class="'com-menuContainer__'+item.icon_class"></i>
+          {{item.text}}
+        </template>
+        <MenuItem
+          v-for="(submenu,index) in item.submenus"
+          :key="index"
+          :to="submenu.router.path"
+          :name="String(submenu.index)"
+        >
+          <i class="com-menuContainer__submenu-icon"></i>
+          {{submenu.text}}
+        </MenuItem>
+      </Submenu>
+      <MenuItem v-else :name="String(index)" :to="item.router.path">
+        <i :class="'com-menuContainer__'+item.icon_class"></i>
+        {{item.text}}
+      </MenuItem>
+    </Menu>
   </div>
 </template>
-<style lang="scss" scoped>
-@import "../assets/leftNavigation.scss";
-</style>
+
 <script>
-import menucontainer from "./menuContainer.vue";
 export default {
-  name: "leftnav",
+  name: "menurouter",
   data() {
     return {
+      activeIndex: "0-1",
       items: [
         {
           id: "btn_homework_manage",
           icon_class: "btn-homework-manage",
           text: "数据分析",
           router: {
-            path: "/dataAnalysis",
+            path: "/home/dataAnalysis",
             name: "dataAnalysis",
             homepagename: "dataAnalysis"
           },
@@ -37,7 +60,7 @@ export default {
               icon_class: "btn-user-manage",
               text: "用户管理",
               router: {
-                path: "/userManage",
+                path: "/home/userManage",
                 name: "userManage",
                 homepagename: "userManage"
               },
@@ -48,7 +71,7 @@ export default {
               icon_class: "btn-teacher-manage",
               text: "电影管理",
               router: {
-                path: "/movieManage",
+                path: "/home/movieManage",
                 name: "movieManage",
                 homepagename: "movieManage"
               },
@@ -59,8 +82,12 @@ export default {
       ]
     };
   },
-  components: {
-    menucontainer
-  }
+  components: {},
+  methods: {}
 };
 </script>
+
+<style lang="scss" scoped>
+@import "./../../assets/img-path.scss";
+@import "./../../assets/menuContainer.scss";
+</style>

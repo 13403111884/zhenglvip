@@ -18,7 +18,8 @@ module.exports = {
   resolve: {
     alias: {
       'public': path.resolve(__dirname, '../public')
-    }
+    },
+    extensions: ['.js', '.json', '.vue', '.scss', '.css']
   },
   module: {
     noParse: /es6-promise\.js$/, // avoid webpack shimming process
