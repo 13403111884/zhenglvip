@@ -1,61 +1,106 @@
 <template>
-  <div class="layout">
-    <Layout>
-      <Sider ref="side" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
-        <MenuContainer></MenuContainer>
+  <div class="layout-wrapper">
+    <Layout class="layout-outer">
+      <Sider
+        collapsible
+        v-model="collapsed"
+        hide-trigger
+        breakpoint="sm"
+        class="layout-Menu"
+      >
+        <SideMenu :collapsed="collapsed" :list="menuList" />
       </Sider>
       <Layout>
-        <Header :style="{padding: 0}" class="layout-header-bar">
-          <AdminHeader @collapsedSider="collapsedSider" ></AdminHeader>
+        <Header class="layout-header">
+          <Head @handleCollapsed="handleCollapsed" :collapsed="collapsed" />
         </Header>
-        <Content
-          :style="{margin: '6px', background: '#fff', minHeight: '100vh'}">
-          <router-view class="layout-view"></router-view>
+        <Content class="layout-content">
+          <router-view class="layout-content-view"/>
         </Content>
       </Layout>
     </Layout>
   </div>
 </template>
-
 <script>
-import AdminHeader from "./adminHeader";
-import MenuContainer from "./menuContainer";
+import Head from '@components/head'
+import SideMenu from '@components/menuContainer'
 export default {
-  name: "menurouter",
-  components: { AdminHeader, MenuContainer },
-  data() {
+  components: {
+    SideMenu,
+    Head
+  },
+  data () {
     return {
-      isCollapsed: false
-    };
+      collapsed: true,
+      menuList: [
+        {
+          title: '111',
+          name: 'menu1',
+          icon: 'md-analytics'
+        },
+        {
+          title: '222',
+          name: 'menu2',
+          icon: 'md-analytics'
+        },
+        {
+          title: '333',
+          name: 'menu3',
+          icon: 'md-appstore',
+          children: [
+            {
+              title: '333-111',
+              name: 'menu31',
+              icon: 'md-apps'
+            },
+            {
+              title: '333-222',
+              name: 'menu32',
+              icon: 'md-apps',
+              children: [
+                {
+                  title: '333-222-111',
+                  name: 'menu321',
+                  icon: 'ios-archive'
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
   },
   methods: {
-    collapsedSider() {
-      this.isCollapsed = !this.isCollapsed
-      this.$refs.side.toggleCollapse();
+    handleCollapsed () {
+      this.collapsed = !this.collapsed
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
-.layout {
-  border: 1px solid #d7dde4;
-  background: #f5f7f9;
-  position: relative;
-  border-radius: 4px;
-  overflow: hidden;
-  &-header-bar {
+/deep/ .ivu-layout-sider-children {
+  overflow-y: auto !important;
+  padding-bottom: 80px;
+}
+.layout-wrapper,
+.layout-outer {
+  height: 100%;
+  .layout-Menu{
+    height: 100vh;
+  }
+  .layout-header {
     background: #fff;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    padding: 0;
   }
-  &-logo-left {
-    width: 90%;
-    height: 30px;
-    background: #5b6270;
-    border-radius: 3px;
-    margin: 15px auto;
-  }
-  &-view {
-    padding: 20px;
+  .layout-content {
+    background-color: #fff;
+    margin: 6px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, .1);
+    .page-card {
+      min-height: "calc(100vh - 84px)";
+    }
   }
 }
 </style>

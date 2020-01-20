@@ -1,159 +1,75 @@
 <template>
-  <Menu
-    theme="dark"
-    :active-name="activeIndex"
-    :open-names="['0']"
-    width="auto"
-    :class="menuitemClasses"
-  >
-    <Submenu
-      v-if="item.hasSubMenu"
-      v-for="(item,index) in items"
-      :name="String(item.index)"
-      :key="index"
-    >
-      <template slot="title">
-        <i :class="'com-menuContainer__'+item.icon_class"></i>
-        <span>{{item.text}}</span>
+  <div class="side-menu-wrapper">
+    <slot></slot>
+    <Menu width="auto" theme="dark" v-show="!collapsed" @on-select="handleSelect">
+      <template v-for="item in list">
+        <ReSubmenu
+          v-if="item.children"
+          :key="`menu_${item.name}`"
+          :name="item.name"
+          :parent="item"
+        >
+          <menu-item></menu-item>
+        </ReSubmenu>
+        <menu-item v-else :key="`menu_${item.name}`" :name="item.name">
+          <Icon :type="item.icon"/>
+          {{ item.title }}
+        </menu-item>
       </template>
-      <MenuItem
-        v-for="(submenu,index) in item.submenus"
-        :key="index"
-        :to="submenu.router.path"
-        :name="String(submenu.index)"
-      >
-        <i class="com-menuContainer__submenu-icon"></i>
-        <span>{{item.text}}</span>
-      </MenuItem>
-    </Submenu>
-    <MenuItem v-else :name="String(index)" :to="item.router.path">
-      <i :class="'com-menuContainer__'+item.icon_class"></i>
-      <span>{{item.text}}</span>
-    </MenuItem>
-  </Menu>
+    </Menu>
+    <div class="drop-wrapper" v-show="collapsed">
+      <template v-for="item in list">
+        <ReDropdown @on-select="handleSelect" v-if="item.children" icon-color="#fff" :show-title="false" :key="`drop_${item.name}`" :parent="item" />
+        <span :title="item.title" v-else :key="`drop_${item.name}`" @click="handleClick(item.name)" class="drop-menu-span">
+          <Icon :type="item.icon" color="#fff" :size="30"/>
+        </span>
+      </template>
+    </div>
+  </div>
 </template>
-
 <script>
+import ReSubmenu from './modules/re-submenu'
+import ReDropdown from './modules/re-dropdown'
 export default {
-  name: "MenuContainer",
-  props: { isCollapsed: { type:Boolean } },
-  data() {
-    return {
-      activeIndex: "0-1",
-      items: [
-        {
-          id: "btn_homework_manage",
-          icon_class: "btn-homework-manage",
-          text: "数据分析",
-          router: {
-            path: "/home/dataAnalysis",
-            name: "dataAnalysis",
-            homepagename: "dataAnalysis"
-          },
-          index: "0",
-          hasSubMenu: false
-        },
-        {
-          id: "btn_account_manage",
-          icon_class: "btn-account-manage",
-          text: "基础管理",
-          index: "1",
-          hasSubMenu: true,
-          submenus: [
-            {
-              id: "btn_user_manage",
-              icon_class: "btn-user-manage",
-              text: "用户管理",
-              router: {
-                path: "/home/userManage",
-                name: "userManage",
-                homepagename: "userManage"
-              },
-              index: "1-1"
-            },
-            {
-              id: "btn_teacher_manage",
-              icon_class: "btn-teacher-manage",
-              text: "电影管理",
-              router: {
-                path: "/home/movieManage",
-                name: "movieManage",
-                homepagename: "movieManage"
-              },
-              index: "1-2"
-            }
-          ]
-        }
-      ]
-    };
+  name: 'SideMenu',
+  components: {
+    ReSubmenu,
+    ReDropdown
   },
-  computed: {
-    menuitemClasses() {
-      return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
+  props: {
+    collapsed: {
+      type: Boolean,
+      default: false
+    },
+    list: {
+      type: Array,
+      default: () => []
     }
   },
-  components: {},
-  methods: {}
-};
+  methods: {
+    handleSelect (name) {
+      console.log(name)
+    },
+    handleClick (name) {
+      console.log(name)
+    }
+  }
+}
 </script>
-
-<style lang="scss" scoped>
-@import "@css/img-path.scss";
-
-@mixin menu-icon($logo-img) {
-  display: inline-block;
-  height: 24px;
-  width: 24px;
-  background: url($logo-img) no-repeat;
-}
-
-.com-menuContainer {
-  &__btn-account-manage {
-    @include menu-icon($logo-home);
+<style lang="scss">
+.side-menu-wrapper {
+  overflow-y: auto;
+  .ivu-tooltip,
+  .drop-menu-span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
   }
-
-  &__btn-homework-manage {
-    @include menu-icon($logo-work);
-  }
-
-  &__btn-system-setting {
-    @include menu-icon($logo-system);
-  }
-
-  &__submenu-icon {
-    float: left !important;
-    height: 30px !important;
-    list-style: circle inside !important;
-    padding-left: 20px !important;
-  }
-}
-.menu-item {
-  span {
-    display: inline-block;
-    overflow: hidden;
-    width: 69px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    vertical-align: bottom;
-    transition: width 0.2s ease 0.2s;
-  }
-  i {
-    transform: translateX(0px);
-    transition: font-size 0.2s ease, transform 0.2s ease;
-    vertical-align: middle;
-    font-size: 16px;
-  }
-}
-.collapsed-menu {
-  span {
-    width: 0px;
-    transition: width 0.2s ease;
-  }
-  i {
-    transform: translateX(5px);
-    transition: font-size 0.2s ease 0.2s, transform 0.2s ease 0.2s;
-    vertical-align: middle;
-    font-size: 22px;
+  .drop-wrapper > .ivu-dropdown {
+    display: block;
+    padding: 10px;
+    margin: 0 auto;
   }
 }
 </style>
