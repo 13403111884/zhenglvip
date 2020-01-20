@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>电影类别统计</div>
     <div id="dataBar">
       <img :src="item" v-for="(item, index) of analysisList" :key="index" />
     </div>

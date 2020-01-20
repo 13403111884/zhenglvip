@@ -17,7 +17,15 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'public': path.resolve(__dirname, '../public')
+      'public': path.resolve(__dirname, '../public'),
+      '@': path.resolve(__dirname, '../src/'),
+      '@util': path.resolve(__dirname, '../src/util/'),
+      '@img': path.resolve(__dirname, '../src/assets/img'),
+      '@css': path.resolve(__dirname, '../src/assets/css/'),
+      '@store': path.resolve(__dirname, '../src/store/'),
+      '@router': path.resolve(__dirname, '../src/router/'),
+      '@views': path.resolve(__dirname, '../src/views/'),
+      '@components': path.resolve(__dirname, '../src/components/')
     },
     extensions: ['.js', '.json', '.vue', '.scss', '.css']
   },

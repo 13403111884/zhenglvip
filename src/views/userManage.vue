@@ -1,15 +1,9 @@
 <template>
   <div>
-    <div>用户数据管理</div>
     <Table border :columns="columns7" :data="data6"></Table>
   </div>
 </template>
 <style lang="scss">
-.button {
-  button{
-    margin-right: 10px;
-  }
-}
 </style>
 
 <script>

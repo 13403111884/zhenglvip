@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>电影数据管理</div>
     <Table border :columns="columns7" :data="data6"></Table>
   </div>
 </template>
@@ -125,9 +124,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.button {
-  button{
-    margin-right: 10px;
-  }
-}
 </style>

@@ -1,5 +1,8 @@
 import {
-  Split,
+  Sider,
+  Layout,
+  Header,
+  Content,
   Button,
   Table,
   Modal,
@@ -11,7 +14,10 @@ import {
 
 export default {
   install: (Vue) => {
-    Vue.component('Split', Split)
+    Vue.component('Sider', Sider)
+    Vue.component('Layout', Layout)
+    Vue.component('Header', Header)
+    Vue.component('Content', Content)
     Vue.component('Button', Button)
     Vue.component('Table', Table)
     Vue.component('Menu', Menu)

@@ -2,6 +2,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import modules from './modules'
 
 Vue.use(Vuex);
 
@@ -46,6 +47,7 @@ export function createStore () {
       setAnalysis (state, list) {
         state.analysisList = list
       },
-    }
+    },
+    modules
   })
 }
