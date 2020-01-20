@@ -1,22 +1,21 @@
-// store.js
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+
+import state from './state'
+import mutations from './mutations'
 import modules from './modules'
 
 Vue.use(Vuex);
 
 export function createStore () {
   return new Vuex.Store({
-    state: {
-      userList: [],
-      movieList: [],
-      analysisList:[],
-    },
-    getters:{
-      userList:state => state.userList,
-      movieList:state => state.movieList,
-      analysisList:state => state.analysisList,
+    state,
+    mutations,
+    getters: {
+      userList: state => state.userList,
+      movieList: state => state.movieList,
+      analysisList: state => state.analysisList
     },
     actions: {
       getUserlist ({ commit }) {
@@ -35,17 +34,6 @@ export function createStore () {
           console.log(res);
           commit('setAnalysis', res.data);
         })
-      },
-    },
-    mutations: {
-      setUserlist (state, list) {
-        state.userList = list
-      },
-      setMovielist (state, list) {
-        state.movieList = list
-      },
-      setAnalysis (state, list) {
-        state.analysisList = list
       },
     },
     modules

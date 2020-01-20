@@ -1,11 +1,7 @@
-export const state = {}
-export const getters = {}
-export const mutations = {}
-export const actions = {}
+import User from './user'
+import Jurisdiction from './jurisdiction'
 
 export default {
-  state,
-  getters,
-  mutations,
-  actions
+    User,
+    Jurisdiction
 }
