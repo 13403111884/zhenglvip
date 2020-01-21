@@ -78,19 +78,16 @@ app.use(microcache.cacheSeconds(1, req => useMicroCache && req.originalUrl))
 
 // 前端请求的接口 api
 app.get('/api/getUserlist', (req, res) => {
-  console.log('/api/getUserlist调用...');
   res.json(serverData.userlist);
 });
 
 // 前端请求的接口 api
 app.get('/api/getMovielist', (req, res) => {
-  console.log('/api/getMovielist调用...');
   res.json(serverData.movielist)
 });
 
 // 前端请求的接口 api
 app.get('/api/getAnalysis', (req, res) => {
-  console.log('/api/getAnalysis调用...');
   var imgpath1 = '/public/11.jpg';
   generateImage(serverData.option1,__dirname+imgpath1);
 

@@ -114,9 +114,6 @@ export default {
     ...mapGetters(["userList"])
   },
   methods: {
-    handleClick() {
-      console.log("警告哦，该功能还没实现呢！");
-    },
     show(index) {
       this.$Modal.info({
         title: "User Info",
@@ -126,9 +123,6 @@ export default {
     remove(index) {
       this.data6.splice(index, 1);
     }
-  },
-  created() {
-    console.log("渲染了userManage组件....");
   }
 };
 </script>

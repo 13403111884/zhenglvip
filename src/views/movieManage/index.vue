@@ -107,9 +107,6 @@ export default {
     ...mapGetters(["movieList"])
   },
   methods: {
-    handleClick() {
-      console.log("警告哦，该功能还没实现呢！");
-    },
     show(index) {
       this.$Modal.info({
         title: "User Info",

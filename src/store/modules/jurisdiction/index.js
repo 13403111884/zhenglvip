@@ -4,6 +4,10 @@ import mutations from './mutations'
 export default {
   state,
   mutations,
-  getters: {},
+  getters: {
+    jurisdiction: state => {
+      return state.routesList
+    }
+  },
   actions: {}
 }

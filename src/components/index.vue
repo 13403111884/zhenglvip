@@ -15,7 +15,9 @@
           <Head @handleCollapsed="handleCollapsed" :collapsed="collapsed" />
         </Header>
         <Content class="layout-content">
-          <router-view class="layout-content-view"/>
+          <div class="layout-content-view">
+            <router-view/>
+          </div>
         </Content>
       </Layout>
     </Layout>
@@ -24,6 +26,8 @@
 <script>
 import Head from '@components/head'
 import SideMenu from '@components/menuContainer'
+
+import { mapGetters } from "vuex";
 export default {
   components: {
     SideMenu,
@@ -32,47 +36,30 @@ export default {
   data () {
     return {
       collapsed: true,
-      menuList: [
-        {
-          title: '111',
-          name: 'menu1',
-          icon: 'md-analytics'
-        },
-        {
-          title: '222',
-          name: 'menu2',
-          icon: 'md-analytics'
-        },
-        {
-          title: '333',
-          name: 'menu3',
-          icon: 'md-appstore',
-          children: [
-            {
-              title: '333-111',
-              name: 'menu31',
-              icon: 'md-apps'
-            },
-            {
-              title: '333-222',
-              name: 'menu32',
-              icon: 'md-apps',
-              children: [
-                {
-                  title: '333-222-111',
-                  name: 'menu321',
-                  icon: 'ios-archive'
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      menuList: []
     }
   },
+  computed: {
+    ...mapGetters(['jurisdiction'])
+  },
+  mounted () { this.init() },
   methods: {
+    init () { this.getMenuList() },
     handleCollapsed () {
       this.collapsed = !this.collapsed
+    },
+    getMenuList () {
+      this.menuList = []
+      if (!this.jurisdiction && !this.jurisdiction.length) return
+      this.jurisdiction.forEach(item => {
+        if (item.name) {
+          this.menuList.push(item)
+        } else if (item.children && item.children.length) {
+          item.children.forEach(el => {
+            this.menuList.push(el)
+          })
+        }
+      })
     }
   }
 }
@@ -84,7 +71,6 @@ export default {
 }
 .layout-wrapper,
 .layout-outer {
-  height: 100%;
   .layout-Menu{
     height: 100vh;
   }
@@ -95,12 +81,11 @@ export default {
   .layout-content {
     background-color: #fff;
     margin: 6px;
-    padding: 10px;
+    padding: 10px 10px 60px;
+    overflow-y: auto;
     border-radius: 5px;
+    height: calc(100vh - 81px);
     box-shadow: 0px 0px 6px rgba(0, 0, 0, .1);
-    .page-card {
-      min-height: "calc(100vh - 84px)";
-    }
   }
 }
 </style>

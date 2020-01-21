@@ -24,7 +24,6 @@ module.exports = {
             chart.setOption(options);
             try {
                 fs.writeFileSync(savePath, chart.getDom().toBuffer());
-                console.log("Create Img:" + savePath);
             } catch (err){
                 console.error("Error: Write File failed" + err.message);
             }

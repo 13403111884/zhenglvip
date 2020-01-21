@@ -1,16 +1,16 @@
 <template>
-  <Dropdown @on-click="handleClick" placement="right-start">
+  <Dropdown placement="right-start">
     <span class="drop-menu-span" :style="titleStyle">
-      <Icon :type="parent.icon" :color="iconColor" :size="30"></Icon>
-      <span  color="#515a6e" v-if="showTitle">{{ parent.title }}</span>
+      <Icon :type="parent.meta.icon" :color="iconColor" :size="30"></Icon>
+      <span color="#515a6e" v-if="showTitle">{{ parent.meta.title }}</span>
     </span>
     <DropdownMenu slot="list">
       <template v-for="item in parent.children">
         <re-dropdown v-if="item.children" :key="`drop_${item.name}`" :parent="item"></re-dropdown>
-        <DropdownItem v-else :key="`drop_${item.name}`" :name="item.name">
-          <Icon :type="item.icon" color="#515a6e" :size="30"></Icon>
-          {{ item.title }}
-        </DropdownItem>
+        <router-link v-else :to="{ name: item.name }" :key="`drop_${item.name}`" :name="item.name">
+          <Icon :type="item.meta.icon" color="#515a6e" :size="30"></Icon>
+          <span class="title">{{ item.meta.title }}</span>
+        </router-link>
       </template>
     </DropdownMenu>
   </Dropdown>
@@ -41,10 +41,22 @@ export default {
       }
     }
   },
-  methods: {
-    handleClick (name) {
-      if (!this.showTitle) this.$emit('on-select', name)
-    }
-  }
+  methods: {}
 }
 </script>
+
+<style lang="scss" scoped>
+.title{
+  display: inline-block;
+  line-height: 30px; 
+  height: 30px;
+  color: #515a6e;
+  position: relative;
+  top: -5px;
+}
+a:hover {
+  span {
+    color: #2d8cf0;
+  }
+}
+</style>

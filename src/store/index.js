@@ -30,10 +30,23 @@ export function createStore () {
       },
       getAnalysis ({ commit }) {
         return axios.get('/api/getAnalysis').then((res) => {
-          console.log('后端返回的数据...');
-          console.log(res);
           commit('setAnalysis', res.data);
         })
+      },
+      Copy ({ commit }) {
+        const input = document.createElement('input')
+        document.body.appendChild(input)
+        input.setAttribute('value', this.content)
+        if (commit('judgeClient') === 'iOS') {
+          input.setAttribute('readonly', 'readonly')
+          input.setSelectionRange(0, -1)
+        } else {
+          input.select()
+        }
+        if (document.execCommand('copy')) {
+          document.execCommand('copy')
+        }
+        document.body.removeChild(input)
       },
     },
     modules

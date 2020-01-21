@@ -1,26 +1,27 @@
 <template>
   <div class="Header">
     <Icon
-      class="menu-wrapper"
+      class="menu-wrapper fl"
       type="md-menu"
       :size="32"
       @click.native="handleCollapsed"
       :class="triggerClasses"
     />
-    <Poptip class="user" placement="bottom-end" width="81">
+    <Poptip class="user fr" placement="bottom-end" width="81">
       <div class="userName">
         <Icon type="md-contact" /> 用户
       </div>
       <ul class="menu-content" slot="content">
         <li>
-          <Icon type="md-settings" />设置
+          <Icon type="md-settings" /> 设置
         </li>
         <li>
-          <Icon type="md-power" />退出
+          <Icon type="md-power" /> 退出
         </li>
       </ul>
     </Poptip>
-    
+    <span class="welcomeSpeech fr">欢迎您使用！</span>
+    <div class="clear"></div>
   </div>
 </template>
 
@@ -47,11 +48,9 @@ export default {
 }
 .menu-wrapper {
   padding: 14px;
-  float: left;
 }
-.fr{ float: right; }
+.welcomeSpeech{ font-size: 12px;margin-right: 20px; }
 .user {
-  float: right;
   font-size: 18px;
   margin-right: 20px;
   cursor: pointer;
@@ -60,6 +59,7 @@ export default {
   }
   .userName {
     height: 50px;
+    font-weight: bold;
     text-align: center;
   }
   .menu-content {

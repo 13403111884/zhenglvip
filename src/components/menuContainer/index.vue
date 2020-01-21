@@ -1,7 +1,7 @@
 <template>
   <div class="side-menu-wrapper">
     <slot></slot>
-    <Menu width="auto" theme="dark" v-show="!collapsed" @on-select="handleSelect">
+    <Menu width="auto" theme="dark" v-show="!collapsed">
       <template v-for="item in list">
         <ReSubmenu
           v-if="item.children"
@@ -11,18 +11,18 @@
         >
           <menu-item></menu-item>
         </ReSubmenu>
-        <menu-item v-else :key="`menu_${item.name}`" :name="item.name">
-          <Icon :type="item.icon"/>
-          {{ item.title }}
+        <menu-item v-else :key="`menu_${item.name}`" :name="item.name" :to="{ name: item.name }" >
+          <Icon :type="item.meta.icon"/>
+          {{ item.meta.title }}
         </menu-item>
       </template>
     </Menu>
     <div class="drop-wrapper" v-show="collapsed">
       <template v-for="item in list">
-        <ReDropdown @on-select="handleSelect" v-if="item.children" icon-color="#fff" :show-title="false" :key="`drop_${item.name}`" :parent="item" />
-        <span :title="item.title" v-else :key="`drop_${item.name}`" @click="handleClick(item.name)" class="drop-menu-span">
-          <Icon :type="item.icon" color="#fff" :size="30"/>
-        </span>
+        <ReDropdown v-if="item.children" icon-color="#fff" :show-title="false" :key="`drop_${item.name}`" :parent="item" />
+        <router-link :title="item.meta.title" :to="{ name: item.name }" v-else :key="`drop_${item.name}`" class="drop-menu-span">
+          <Icon :type="item.meta.icon" color="#fff" :size="30"/>
+        </router-link>
       </template>
     </div>
   </div>
@@ -46,14 +46,7 @@ export default {
       default: () => []
     }
   },
-  methods: {
-    handleSelect (name) {
-      console.log(name)
-    },
-    handleClick (name) {
-      console.log(name)
-    }
-  }
+  methods: {}
 }
 </script>
 <style lang="scss">
