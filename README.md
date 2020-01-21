@@ -2,7 +2,7 @@
 
 ## 构建步骤
 
-**需要 Node.js 7+ （作者使用的版本为：node.js 8.2.1  npm 5.3.0）**
+**需要 Node.js 7+**
 
 ``` bash
 # install dependencies
@@ -17,7 +17,3 @@ npm run build
 # serve in production mode
 npm start
 ```
-
-## License
-
-MIT
