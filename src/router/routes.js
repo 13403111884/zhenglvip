@@ -6,12 +6,12 @@ export default [
     name: '',
     component: Home,
     redirect: { name: 'dataAnalysis' },
-    meta: { title: '', icon: 'md-analytics', code: [] },
+    meta: { title: '', icon: 'md-analytics', roles: [] },
     children: [
       {
         path: 'dataAnalysis',
         name: 'dataAnalysis',
-        meta: { title: '图表', icon: 'md-analytics', code: [] },
+        meta: { title: '图表', icon: 'md-analytics', roles: [] },
         component: () => import(/* webpackChunkName: "index" */ '@views/dataAnalysis')
       }
     ]
@@ -21,20 +21,18 @@ export default [
     name: 'manage',
     component: Home,
     redirect: { name: 'userManage' },
-    meta: { title: '表格', icon: 'md-appstore', code: [] },
+    meta: { title: '表格', icon: 'md-appstore', roles: [] },
     children: [
       {
         path: 'userManage',
         name: 'userManage',
-        meta: { code: [] },
-        meta: { title: 'user表格', icon: 'md-apps', code: [] },
+        meta: { title: 'user表格', icon: 'md-apps', roles: [] },
         component: () => import(/* webpackChunkName: "Manage" */ '@views/userManage')
       },
       {
         path: 'movieManage',
         name: 'movieManage',
-        meta: { code: [] },
-        meta: { title: 'movie表格', icon: 'ios-archive',  code: [] },
+        meta: { title: 'movie表格', icon: 'ios-archive',  roles: [] },
         component: () => import(/* webpackChunkName: "Manage" */ '@views/movieManage')
       }
     ]

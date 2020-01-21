@@ -27,7 +27,7 @@
 import Head from '@components/head'
 import SideMenu from '@components/menuContainer'
 
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations, mapActions } from "vuex";
 export default {
   components: {
     SideMenu,
@@ -44,7 +44,13 @@ export default {
   },
   mounted () { this.init() },
   methods: {
-    init () { this.getMenuList() },
+    init () {
+      this.getMenuList()
+      // this.setJurisdiction()
+      this.GenerateRoutes()
+    },
+    // ...mapMutations(["setJurisdiction"]),
+    ...mapActions(['GenerateRoutes']),
     handleCollapsed () {
       this.collapsed = !this.collapsed
     },

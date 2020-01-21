@@ -1,5 +1,4 @@
 import axios from 'axios'
-import store from '@store'
 
 const baseURL = ''
 const service = axios.create({ timeout: 10000 })
@@ -29,7 +28,7 @@ function connector (method, url, params) {
       params: method === 'get' ? params : null
     }).then(res => {
       if (res.data.errCode) {
-        store.commit('textTip', { str: res.data.errMsg, t: 2000 })
+        console.log(res.data.errMsg)
       }
       resolve({
         ...res.data,

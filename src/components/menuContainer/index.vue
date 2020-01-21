@@ -1,5 +1,5 @@
 <template>
-  <div class="side-menu-wrapper">
+  <div class="side-menu-wrapper userNO">
     <slot></slot>
     <Menu width="auto" theme="dark" v-show="!collapsed">
       <template v-for="item in list">
