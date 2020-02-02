@@ -1,23 +1,24 @@
 import state from './state'
 import mutations from './mutations'
 
+import routesList from '@/router/routes'
+
 export default {
   state,
   mutations,
   getters: {
-    jurisdiction: state => {
-      return state.routesList
-    }
+    Juris: _ => routesList,
+    Routers: state => state.routers
   },
   actions: {
-    GenerateRoutes ({ commit, state }, data) {
-      console.log(state.routesList)
-      return new Promise(resolve => {
+    GenerateRoutes ({ commit, state }) {
+      const { roles } = state
+      return new Promise((resolve, reject) => {
         commit(
           'setRouter',
           commit(
             'getRouter',
-            { asyncRouterMap: state.routesList , roles: state.code, type: 'roles' }
+            routesList, roles
           )
         )
         resolve()

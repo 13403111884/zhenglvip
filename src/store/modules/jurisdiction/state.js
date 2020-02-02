@@ -1,3 +1,6 @@
+const login = () => import(/* webpackChunkName: "index" */ '@components/login')
+const register = () => import(/* webpackChunkName: "index" */ '@components/register')
+
 const error = () => import(/* webpackChunkName: "index" */ '@components/error')
 const error304 = () => import(/* webpackChunkName: "index" */ '@components/error/304')
 const error400 = () => import(/* webpackChunkName: "index" */ '@components/error/400')
@@ -7,11 +10,13 @@ const error404 = () => import(/* webpackChunkName: "index" */ '@components/error
 const error500 = () => import(/* webpackChunkName: "index" */ '@components/error/500')
 const error503 = () => import(/* webpackChunkName: "index" */ '@components/error/503')
 
-import routesList from '@/router/routes'
-
 export default {
-  routesList,
-  code: [],
+  roles: [],
+  routers: [],
+  defaultRoute: [
+    { path: '/login', name: 'login', component: login, meta: { title: '登录' } },
+    { path: '/register', name: 'register', component: register, meta: { title: '注册' } }
+  ],
   error: {
     path: '*',
     name: 'error',

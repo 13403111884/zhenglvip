@@ -40,24 +40,23 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['jurisdiction'])
+    ...mapGetters(['Juris', 'Routers'])
   },
   mounted () { this.init() },
   methods: {
     init () {
       this.getMenuList()
-      // this.setJurisdiction()
-      this.GenerateRoutes()
     },
-    // ...mapMutations(["setJurisdiction"]),
     ...mapActions(['GenerateRoutes']),
     handleCollapsed () {
       this.collapsed = !this.collapsed
     },
-    getMenuList () {
+    async getMenuList () {
       this.menuList = []
-      if (!this.jurisdiction && !this.jurisdiction.length) return
-      this.jurisdiction.forEach(item => {
+      // await this.GenerateRoutes()
+      // console.log('console.log(this.routerList)', this.Routers)
+      if (!this.Juris && !this.Juris.length) return
+      this.Juris.forEach(item => {
         if (item.name) {
           this.menuList.push(item)
         } else if (item.children && item.children.length) {
