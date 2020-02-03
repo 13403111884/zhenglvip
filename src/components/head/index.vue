@@ -1,12 +1,8 @@
 <template>
   <div class="Header">
-    <Icon
-      class="menu-wrapper fl"
-      type="md-menu"
-      :size="32"
-      @click.native="handleCollapsed"
-      :class="triggerClasses"
-    />
+    <Tooltip placement="right" content="侧边栏切换">
+      <Icon @click.native="handleCollapsed" :size="32" class="menu-wrapper fl" :type="IconType" />
+    </Tooltip>
     <Poptip class="user fr" placement="bottom-end" width="81">
       <div class="userName">
         <Icon type="md-contact" /> 用户
@@ -16,7 +12,7 @@
           <Icon type="md-settings" /> 设置
         </li>
         <li>
-          <Icon type="md-power" /> 退出
+          <Icon type="md-log-out" /> 退出
         </li>
       </ul>
     </Poptip>
@@ -32,11 +28,15 @@ export default {
   computed: {
     triggerClasses() {
       return ["trigger-icon", this.collapsed ? "rotate" : ""];
+    },
+    IconType () {
+      return this.collapsed ? "md-bookmarks" : "ios-bookmarks"
     }
   },
   methods: {
     handleCollapsed() {
       this.$emit("handleCollapsed");
+      this.TooltipDisabled = true
     }
   }
 };
@@ -47,7 +47,8 @@ export default {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 .menu-wrapper {
-  padding: 14px;
+  padding: 16px;
+  cursor: pointer;
 }
 .welcomeSpeech{ font-size: 12px;margin-right: 20px; }
 .user {
@@ -70,14 +71,6 @@ export default {
         color: #2d8cf0;
       }
     }
-  }
-}
-.trigger-icon {
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  &.rotate {
-    transform: rotateZ(-90deg);
-    transition: transform 0.3s ease;
   }
 }
 </style>

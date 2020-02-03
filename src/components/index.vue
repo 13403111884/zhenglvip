@@ -16,7 +16,7 @@
         </Header>
         <Content class="layout-content">
           <div class="layout-content-view">
-            <router-view/>
+            <router-view />
           </div>
         </Content>
       </Layout>
@@ -53,7 +53,7 @@ export default {
     },
     async getMenuList () {
       this.menuList = []
-      // await this.GenerateRoutes()
+      await this.GenerateRoutes()
       // console.log('console.log(this.routerList)', this.Routers)
       if (!this.Juris && !this.Juris.length) return
       this.Juris.forEach(item => {

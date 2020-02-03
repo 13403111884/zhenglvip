@@ -13,7 +13,7 @@ export default {
   actions: {
     GenerateRoutes ({ commit, state }) {
       const { roles } = state
-      return new Promise((resolve, reject) => {
+      return new Promise(async (resolve, reject) => {
         commit(
           'setRouter',
           commit(
