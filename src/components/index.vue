@@ -55,9 +55,9 @@ export default {
       this.menuList = []
       await this.GenerateRoutes()
       // console.log('console.log(this.routerList)', this.Routers)
-      if (!this.Juris && !this.Juris.length) return
-      this.Juris.forEach(item => {
-        if (item.name) {
+      if (!this.Routers && !this.Routers.length) return
+      this.Routers.forEach(item => {
+        if (item.name && item.meta.show !== false) {
           this.menuList.push(item)
         } else if (item.children && item.children.length) {
           item.children.forEach(el => {

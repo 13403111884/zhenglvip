@@ -14,8 +14,8 @@ export default {
   roles: [],
   routers: [],
   defaultRoute: [
-    { path: '/login', name: 'login', component: login, meta: { title: '登录' } },
-    { path: '/register', name: 'register', component: register, meta: { title: '注册' } }
+    { path: '/login', name: 'login', component: login, meta: { title: '登录', show: false } },
+    { path: '/register', name: 'register', component: register, meta: { title: '注册', show: false } }
   ],
   error: {
     path: '*',
