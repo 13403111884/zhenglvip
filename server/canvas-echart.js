@@ -1,7 +1,4 @@
 'use strict';
-
-const path = require('path');
-// const CanvasEchart = require('canvas');
 const { createCanvas, loadImage } = require('canvas');
 const echarts = require('echarts');
 const fs = require('fs');

@@ -22,5 +22,9 @@ export default {
   setUserlist,
   setMovielist,
   setAnalysis,
-  judgeClient
+  judgeClient,
+  setRouter: (state, routers) => {
+    if (!routers) return
+    state.routers = state.defaultRoute.concat(routers)
+  }
 }
