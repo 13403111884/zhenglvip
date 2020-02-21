@@ -7,7 +7,7 @@ import ProgressBar from './components/ProgressBar'
 const bar = Vue.prototype.$bar = new Vue(ProgressBar).$mount()
 document.body.appendChild(bar.$el)
 
-// a global mixin that calls `asyncData` when a route component's params change
+// 全局混合，当路由组件的参数发生变化时调用`asyncData`
 Vue.mixin({
   beforeRouteUpdate (to, from, next) {
     const { asyncData } = this.$options

@@ -10,10 +10,6 @@ function autoLoad(app, root) {
     let routeURL = file.replace(/\.[^.]*$/, '').replace(root.replace(/\\/g, '/'), '')
     let methods = Object.keys(controller)
 
-    console.log('controller', controller )
-    console.log('routeURL', routeURL )
-    console.log('methods', methods )
-    
     function applyMethod(name, methodBody) {
       let body = methodBody
       let method = 'get'
