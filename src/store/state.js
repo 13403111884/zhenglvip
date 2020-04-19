@@ -16,6 +16,7 @@ export default {
   analysisList: [],
   roles: [],
   routers: [],
+  editorApiKey: 'a3fdu30jxxfram0x5vmjn3hwxi8h8nixoxu6seaq340iqx6i',
   defaultRoute: [
     { path: '/login', name: 'login', component: login, meta: { title: '登录', show: false } },
     { path: '/register', name: 'register', component: register, meta: { title: '注册', show: false } }

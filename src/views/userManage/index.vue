@@ -1,128 +1,134 @@
 <template>
   <div>
-    <Table border :columns="columns7" :data="data6"></Table>
+    <Search />
+
+    <Button type="primary" class="mb10" @click="basicInfo()">添加信息</Button>
+
+    <Table border :columns="tableData.columns" :data="tableData.list"></Table>
+
+    <BasicInfo :basicInfo="modalData.basicInfo" />
+   
+    <Business :business="modalData.business" />
   </div>
 </template>
 <style lang="scss">
 </style>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
+import columns from './modlues/table'
+import Search from './modlues/search'
+import BasicInfo from './modlues/basicInfo'
+import Business from './modlues/business'
 export default {
   // 在路由组件上暴露出一个自定义静态函数 asyncData。
   // 注意，由于此函数会在组件实例化之前调用，所以它无法访问 this
   asyncData({ store }) {
-    return store.dispatch("getUserlist").then(_ => {})
+    return store.dispatch('getUserlist').then(_ => {})
   },
-
+  components: { Search, BasicInfo, Business },
   data() {
     return {
       showImport: false,
       loading: false,
-      columns7: [
-        {
-          title: "Name",
-          key: "name",
-          render: (h, params) => {
-            return h("div", [
-              h("Icon", {
-                props: {
-                  type: "person"
-                }
-              }),
-              h("strong", params.row.name)
-            ]);
+      modalData: {
+        basicInfo: {
+          type: 'add',
+          show: false,
+          title: "基本信息",
+          loading: false,
+          params: {
+            contactPerson: '',
+            name: '',
+            phone: '',
+            area: '',
+            industry: '',
+            transactionTime: ''
           }
         },
-        {
-          title: "Age",
-          key: "age"
-        },
-        {
-          title: "Address",
-          key: "address"
-        },
-        {
-          title: "Action",
-          key: "action",
-          width: 150,
-          align: "center",
-          render: (h, params) => {
-            return h("div", [
-              h(
-                "Button",
-                {
-                  props: {
-                    type: "primary",
-                    size: "small"
-                  },
-                  style: {
-                    marginRight: "5px"
-                  },
-                  on: {
-                    click: () => {
-                      this.show(params.index);
-                    }
-                  }
-                },
-                "View"
-              ),
-              h(
-                "Button",
-                {
-                  props: {
-                    type: "error",
-                    size: "small"
-                  },
-                  on: {
-                    click: () => {
-                      this.remove(params.index);
-                    }
-                  }
-                },
-                "Delete"
-              )
-            ]);
+        business: {
+          show: false,
+          title: "业务信息",
+          loading: false,
+          params: {
+            contactPerson: '',
+            name: '',
+            phone: '',
+            area: '',
+            industry: '',
+            transactionTime: ''
           }
         }
-      ],
-      data6: [
-        {
-          name: "John Brown",
-          age: 18,
-          address: "New York No. 1 Lake Park"
-        },
-        {
-          name: "Jim Green",
-          age: 24,
-          address: "London No. 1 Lake Park"
-        },
-        {
-          name: "Joe Black",
-          age: 30,
-          address: "Sydney No. 1 Lake Park"
-        },
-        {
-          name: "Jon Snow",
-          age: 26,
-          address: "Ottawa No. 2 Lake Park"
-        }
-      ]
-    };
+      },
+      tableData: {
+        columns: columns(this) || [],
+        loading: false,
+        list: [
+          {
+            name: 'John Brown',
+            age: 18,
+            address: 'New York No. 1 Lake Park'
+          },
+          {
+            name: 'Jim Green',
+            age: 24,
+            address: 'London No. 1 Lake Park'
+          },
+          {
+            name: 'Joe Black',
+            age: 30,
+            address: 'Sydney No. 1 Lake Park'
+          },
+          {
+            name: 'Jon Snow',
+            age: 26,
+            address: 'Ottawa No. 2 Lake Park'
+          }
+        ]
+      }
+    }
   },
   computed: {
-    ...mapGetters(["userList"])
+    ...mapGetters(['userList'])
   },
   methods: {
     show(index) {
-      this.$Modal.info({
-        title: "User Info",
-        content: `Name：${this.data6[index].name}<br>Age：${this.data6[index].age}<br>Address：${this.data6[index].address}`
-      });
+      this.$Modal({
+        type: 'info',
+        title: 'User Info',
+        content: `Name：${this.tableData.list[index].name}<br>Age：${this.tableData.list[index].age}<br>Address：${this.tableData.list[index].address}`
+      })
     },
     remove(index) {
-      this.data6.splice(index, 1);
+      this.$Modal({
+        content: '<p>是否要删除此条信息</p>',
+        onOk: () => {
+          this.tableData.list.splice(index, 1)
+          this.$Message()
+        },
+        onCancel: () => {
+          this.$Message({ content: '已关闭', type: 'info' })
+        }
+      })
+    },
+    basicInfo(type, row) {
+      this.modalData.basicInfo.type = type
+      if (type === 'edit') {
+        const {contactPerson, name, phone, area, industry, transactionTime} = row
+        this.modalData.basicInfo.params = {
+          contactPerson,
+          name,
+          phone,
+          area,
+          industry,
+          transactionTime
+        }
+      }
+      this.modalData.basicInfo.show = true
+    },
+    business (row) {
+      this.modalData.basicInfo.show = true
     }
   }
-};
+}
 </script>

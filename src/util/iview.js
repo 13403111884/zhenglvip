@@ -8,6 +8,12 @@ import {
   Card,
   Table,
   Modal,
+  Message,
+  Input,
+  Form,
+  FormItem,
+  Row,
+  Col,
   Menu,
   Submenu,
   Tooltip,
@@ -29,6 +35,12 @@ export default {
     Vue.component('Icon', Icon)
     Vue.component('Card', Card)
     Vue.component('Table', Table)
+    Vue.component('Modal', Modal)
+    Vue.component('Input', Input)
+    Vue.component('Form', Form)
+    Vue.component('FormItem', FormItem)
+    Vue.component('Row', Row)
+    Vue.component('Col', Col)
     Vue.component('Dropdown', Dropdown)
     Vue.component('DropdownMenu', DropdownMenu)
     Vue.component('DropdownItem', DropdownItem)
@@ -39,6 +51,54 @@ export default {
     Vue.component('MenuItem', MenuItem)
     Vue.component('MenuGroup', MenuGroup)
 
-    Vue.prototype.$Modal = Modal
+    const arr = { success: '成功！', warning: '警告！', error: '失败！'}
+    Vue.prototype.$Modal = function (item) {
+      const {
+        title = '确认窗',
+        width = 416,
+        loading = false,
+        content = '成功',
+        render = null,
+        okText = '确定',
+        cancelText = '取消',
+        scrollable = false,
+        closable = true,
+        onOk = () => { Message.success({ content: '你点击了确认' }) },
+        onCancel = () => { Message.warning({ content: '你点击了取消' }) },
+        type = 'confirm'
+      } = item || {}
+      return Modal[type]({
+        title,
+        width,
+        loading,
+        content,
+        render,
+        okText,
+        cancelText,
+        scrollable,
+        closable,
+        onOk,
+        onCancel
+      })
+    }
+
+    Vue.prototype.$Message = function (item) {
+      const {
+        top = 24,
+        background = true,
+        type = 'success',
+        content = null,
+        render = null,
+        closable = false,
+        duration = 3
+      } = item || {}
+      const params = { top, background, duration, closable }
+      if (render) {
+        params.render = render
+      } else {
+        params.content = content || arr[type] || '提示信息！'
+      }
+      return Message[type](params)
+    }
   }
 }

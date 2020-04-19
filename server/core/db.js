@@ -24,14 +24,14 @@ const sequelize = new Sequelize(dbName, user, password, {
         deletedAt: 'deleted_at',
         // 把驼峰命名转换为下划线
         underscored: true,
-        freezeTableName: true,
-        scopes: {
-            bh: {
-                attributes: {
-                    exclude: ['updated_at', 'deleted_at', 'created_at']
-                }
-            }
-        }
+        // freezeTableName: true,
+        // scopes: {
+        //     bh: {
+        //         attributes: {
+        //             exclude: ['updated_at', 'deleted_at', 'created_at']
+        //         }
+        //     }
+        // }
     }
 })
 

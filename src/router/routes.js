@@ -30,10 +30,10 @@ export default [
         component: () => import(/* webpackChunkName: "Manage" */ '@views/userManage')
       },
       {
-        path: 'movieManage',
-        name: 'movieManage',
-        meta: { title: 'movie表格', icon: 'ios-archive',  roles: [] },
-        component: () => import(/* webpackChunkName: "Manage" */ '@views/movieManage')
+        path: 'sumUp',
+        name: 'sumUp',
+        meta: { title: '总结', icon: 'ios-archive',  roles: [] },
+        component: () => import(/* webpackChunkName: "Manage" */ '@views/sumUp')
       }
     ]
   }

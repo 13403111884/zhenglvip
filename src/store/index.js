@@ -43,19 +43,19 @@ export function createStore () {
     },
     actions: {
       getUserlist ({ commit }) {
-        return axios.get('/v1/get/getUserlist').then((res) => {
-            commit('setUserlist', res.data)
-        })
+        // return axios.get('/v1/get/getUserlist').then((res) => {
+        //     commit('setUserlist', res.data)
+        // })
       },
       getMovielist ({ commit }) {
-        return axios.get('/v1/get/getMovielist').then((res) => {
-          commit('setMovielist', res.data)
-        })
+        // return axios.get('/v1/get/getMovielist').then((res) => {
+        //   commit('setMovielist', res.data)
+        // })
       },
       getAnalysis ({ commit }) {
-        return axios.get('/v1/get/getAnalysis').then((res) => {
-          commit('setAnalysis', res.data);
-        })
+        // return axios.get('/v1/get/getAnalysis').then((res) => {
+        //   commit('setAnalysis', res.data);
+        // })
       },
       Copy ({ commit }) {
         const input = document.createElement('input')

@@ -82,6 +82,21 @@ del {
   text-align: center;
 }
 
+.rt {
+  text-align: right;
+}
+
 .clear {
   clear: both;
+}
+
+$list: 'l' 'left' 10, 't' 'top' 10, 'r' 'right' 10, 'b' 'bottom' 10,
+  'l' 'left' 20, 't' 'top' 20, 'r' 'right' 20, 'b' 'bottom' 20;
+@each $name, $opt, $num in $list {
+  .m#{$name}#{$num} {
+    margin-#{$opt}: #{$num}px;
+  }
+  .p#{$name}#{$num} {
+    padding-#{$opt}: #{$num}px;
+  }
 }
