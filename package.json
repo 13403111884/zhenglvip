@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@tinymce/tinymce-vue": "^3.2.0",
-    "axios": "^0.16.0",
+    "axios": "^0.18.1",
     "canvas": "^2.6.1",
     "compression": "^1.7.1",
     "cross-env": "^5.1.1",
