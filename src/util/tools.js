@@ -1,3 +1,5 @@
+import Moment from 'moment'
+
 export function lookup (obj, replaceVal = '--', exec = '_') {
   return new Proxy({}, {
     get: (target, key) => {
@@ -9,8 +11,11 @@ export function lookup (obj, replaceVal = '--', exec = '_') {
     }
   })
 }
-export const getTime = (time, format) => {
+export function getTime (time, format) {
   return time ? Moment(time).format(format) : '--'
+}
+export const getDataTime = (time) => {
+  return time ? Moment(time).valueOf() : '--'
 }
 
 export default {

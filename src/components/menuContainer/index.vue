@@ -3,25 +3,32 @@
     <slot></slot>
     <Menu width="auto" theme="dark" v-show="!collapsed">
       <template v-for="item in list">
-        <ReSubmenu
-          v-if="item.children"
-          :key="`menu_${item.name}`"
-          :name="item.name"
-          :parent="item"
-        >
+        <ReSubmenu v-if="item.children" :key="`menu_${item.name}`" :name="item.name" :parent="item">
           <menu-item></menu-item>
         </ReSubmenu>
-        <menu-item v-else :key="`menu_${item.name}`" :name="item.name" :to="{ name: item.name }" >
-          <Icon :type="item.meta.icon"/>
+        <menu-item v-else :key="`menu_${item.name}`" :name="item.name" :to="{ name: item.name }">
+          <Icon :type="item.meta.icon" />
           {{ item.meta.title }}
         </menu-item>
       </template>
     </Menu>
     <div class="drop-wrapper" v-show="collapsed">
       <template v-for="item in list">
-        <ReDropdown v-if="item.children" icon-color="#fff" :show-title="false" :key="`drop_${item.name}`" :parent="item" />
-        <router-link :title="item.meta.title" :to="{ name: item.name }" v-else :key="`drop_${item.name}`" class="drop-menu-span">
-          <Icon :type="item.meta.icon" color="#fff" :size="30"/>
+        <ReDropdown
+          v-if="item.children"
+          icon-color="#fff"
+          :show-title="false"
+          :key="`drop_${item.name}`"
+          :parent="item"
+        />
+        <router-link
+          :title="item.meta.title"
+          :to="{ name: item.name }"
+          v-else
+          :key="`drop_${item.name}`"
+          class="drop-menu-span"
+        >
+          <Icon :type="item.meta.icon" color="#fff" :size="30" />
         </router-link>
       </template>
     </div>

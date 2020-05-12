@@ -2,5 +2,6 @@
 module.exports = {
   isProd: process.env.NODE_ENV === 'production',
   useMicroCache: process.env.MICRO_CACHE !== 'false',
-  port: process.env.PORT || 80
+  HOST: process.env.HOST || '0.0.0.0',
+  port: process.env.PORT || 10008
 }

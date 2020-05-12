@@ -20,10 +20,6 @@ module.exports = merge(base, {
     // 服务端使用common.js 规范
     libraryTarget: 'commonjs2'
   },
-  resolve: {
-    alias: {
-    }
-  },
   // https://webpack.js.org/configuration/externals/#externals
   // https://github.com/liady/webpack-node-externals
   // 外置化应用程序依赖模块。可以使服务器构建速度更快，

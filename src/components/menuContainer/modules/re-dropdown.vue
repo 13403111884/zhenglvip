@@ -46,9 +46,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.title{
+.title {
   display: inline-block;
-  line-height: 30px; 
+  line-height: 30px;
   height: 30px;
   color: #515a6e;
   position: relative;

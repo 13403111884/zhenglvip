@@ -1,4 +1,4 @@
-const Home = () => import(/* webpackChunkName: "index" */ '@components')
+const Home = () => import(/* webpackChunkName: "index" */ './../components')
 
 export default [
   {
@@ -12,7 +12,7 @@ export default [
         path: 'dataAnalysis',
         name: 'dataAnalysis',
         meta: { title: '图表', icon: 'md-analytics', roles: [] },
-        component: () => import(/* webpackChunkName: "index" */ '@views/dataAnalysis')
+        component: () => import(/* webpackChunkName: "index" */ './../views/dataAnalysis')
       }
     ]
   },
@@ -27,13 +27,13 @@ export default [
         path: 'userManage',
         name: 'userManage',
         meta: { title: 'user表格', icon: 'md-apps', roles: [] },
-        component: () => import(/* webpackChunkName: "Manage" */ '@views/userManage')
+        component: () => import(/* webpackChunkName: "Manage" */ './../views/userManage')
       },
       {
         path: 'sumUp',
         name: 'sumUp',
-        meta: { title: '总结', icon: 'ios-archive',  roles: [] },
-        component: () => import(/* webpackChunkName: "Manage" */ '@views/sumUp')
+        meta: { title: '总结', icon: 'ios-archive', roles: [] },
+        component: () => import(/* webpackChunkName: "Manage" */ './../views/sumUp')
       }
     ]
   }

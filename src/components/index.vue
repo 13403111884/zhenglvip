@@ -1,13 +1,7 @@
 <template>
   <div class="layout-wrapper">
     <Layout class="layout-outer">
-      <Sider
-        collapsible
-        v-model="collapsed"
-        hide-trigger
-        breakpoint="sm"
-        class="layout-Menu"
-      >
+      <Sider collapsible v-model="collapsed" hide-trigger breakpoint="sm" class="layout-Menu">
         <SideMenu :collapsed="collapsed" :list="menuList" />
       </Sider>
       <Layout>
@@ -24,10 +18,10 @@
   </div>
 </template>
 <script>
-import Head from '@components/head'
-import SideMenu from '@components/menuContainer'
+import Head from './head'
+import SideMenu from './menuContainer'
 
-import { mapGetters, mapMutations, mapActions } from "vuex";
+import { mapGetters, mapActions } from 'vuex'
 export default {
   components: {
     SideMenu,
@@ -42,7 +36,9 @@ export default {
   computed: {
     ...mapGetters(['Juris', 'Routers'])
   },
-  mounted () { this.init() },
+  mounted () {
+    this.init()
+  },
   methods: {
     init () {
       this.getMenuList()
@@ -54,7 +50,6 @@ export default {
     async getMenuList () {
       this.menuList = []
       await this.GenerateRoutes()
-      // console.log('console.log(this.routerList)', this.Routers)
       if (!this.Routers && !this.Routers.length) return
       this.Routers.forEach(item => {
         if (item.name && item.meta.show !== false) {
@@ -76,7 +71,7 @@ export default {
 }
 .layout-wrapper,
 .layout-outer {
-  .layout-Menu{
+  .layout-Menu {
     height: 100vh;
   }
   .layout-header {
@@ -90,7 +85,7 @@ export default {
     overflow-y: auto;
     border-radius: 5px;
     height: calc(100vh - 81px);
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, .1);
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
   }
 }
 </style>

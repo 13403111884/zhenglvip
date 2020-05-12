@@ -2,12 +2,9 @@ const path = require('path')
 const express = require('express')
 const favicon = require('serve-favicon')
 const compression = require('compression')
-const autoLoadRouter = require('./server/core/init.js')
 
-const { app, readyPromise, render } = require('./config/ssr')
-const { isProd, useMicroCache, port } = require('./config/env')
-
-autoLoadRouter(app, path.resolve(__dirname, './server/app/api'))
+const { app, readyPromise, render } = require('./server/ssr')
+const { isProd, port } = require('./config/env')
 
 const serve = (file, cache) => express.static(path.resolve(__dirname, file), {
   maxAge: cache && isProd ? 1000 * 60 * 60 * 24 * 30 : 0
@@ -24,6 +21,6 @@ app.get('*', isProd ? render : (req, res) => {
   readyPromise.then(() => render(req, res))
 })
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`server started at localhost:${port}`)
 })

@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+// import axios from 'axios'
 
 import state from './state'
 import mutations from './mutations'
 import modules from './modules'
 
-import routesList from '@/router/routes'
+import routesList from './../router/routes'
 
 const setJurisdiction = (roles, item) => {
   if (item.meta && item.meta.roles && item.meta.roles.length) {
@@ -17,6 +17,7 @@ const setJurisdiction = (roles, item) => {
 }
 
 const getRouter = (routes, roles) => {
+  if (!routes) return
   return routes.filter(item => {
     if (setJurisdiction(roles, item)) {
       if (item.children && item.children.length) {
@@ -28,34 +29,26 @@ const getRouter = (routes, roles) => {
   })
 }
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export function createStore () {
   return new Vuex.Store({
+    namespaced: true,
     state,
     mutations,
     getters: {
       userList: state => state.userList,
       movieList: state => state.movieList,
       analysisList: state => state.analysisList,
-      Juris: _ => routesList,
+      Juris: () => routesList,
       Routers: state => state.routers
     },
     actions: {
-      getUserlist ({ commit }) {
-        // return axios.get('/v1/get/getUserlist').then((res) => {
-        //     commit('setUserlist', res.data)
-        // })
-      },
       getMovielist ({ commit }) {
-        // return axios.get('/v1/get/getMovielist').then((res) => {
-        //   commit('setMovielist', res.data)
-        // })
+        commit('setMovielist', {})
       },
       getAnalysis ({ commit }) {
-        // return axios.get('/v1/get/getAnalysis').then((res) => {
-        //   commit('setAnalysis', res.data);
-        // })
+        commit('setAnalysis', {});
       },
       Copy ({ commit }) {
         const input = document.createElement('input')
@@ -73,12 +66,12 @@ export function createStore () {
         document.body.removeChild(input)
       },
       GenerateRoutes ({ commit, state }) {
-        const { roles } = state
-        return new Promise(async (resolve, reject) => {
+        const { rolesList } = state
+        return new Promise((resolve, reject) => {
           try {
             commit(
               'setRouter',
-              getRouter(routesList, roles)
+              getRouter(routesList, rolesList)
             )
             resolve(state.routers)
           } catch (err) {
@@ -87,6 +80,8 @@ export function createStore () {
         })
       }
     },
-    modules
+    modules: {
+      ...modules
+    }
   })
 }

@@ -5,14 +5,14 @@
     </Tooltip>
     <Poptip class="user fr" placement="bottom-end" width="81">
       <div class="userName">
-        <Icon type="md-contact" /> 用户
+        <Icon type="md-contact" />用户
       </div>
       <ul class="menu-content" slot="content">
         <li>
-          <Icon type="md-settings" /> 设置
+          <Icon type="md-settings" />设置
         </li>
         <li>
-          <Icon type="md-log-out" /> 退出
+          <Icon type="md-log-out" />退出
         </li>
       </ul>
     </Poptip>
@@ -23,23 +23,23 @@
 
 <script>
 export default {
-  name: "Header",
+  name: 'Header',
   props: { collapsed: { type: Boolean } },
   computed: {
-    triggerClasses() {
-      return ["trigger-icon", this.collapsed ? "rotate" : ""];
+    triggerClasses () {
+      return ['trigger-icon', this.collapsed ? 'rotate' : '']
     },
     IconType () {
-      return this.collapsed ? "md-bookmarks" : "ios-bookmarks"
+      return this.collapsed ? 'md-bookmarks' : 'ios-bookmarks'
     }
   },
   methods: {
-    handleCollapsed() {
-      this.$emit("handleCollapsed");
+    handleCollapsed () {
+      this.$emit('handleCollapsed')
       this.TooltipDisabled = true
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -50,7 +50,10 @@ export default {
   padding: 16px;
   cursor: pointer;
 }
-.welcomeSpeech{ font-size: 12px;margin-right: 20px; }
+.welcomeSpeech {
+  font-size: 12px;
+  margin-right: 20px;
+}
 .user {
   font-size: 18px;
   margin-right: 20px;
@@ -64,10 +67,10 @@ export default {
     text-align: center;
   }
   .menu-content {
-    li{
+    li {
       line-height: 36px;
       border-bottom: 1px solid #cccccc;
-      &:hover{
+      &:hover {
         color: #2d8cf0;
       }
     }

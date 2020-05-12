@@ -5,11 +5,11 @@ import { createRouter } from '@router'
 import { sync } from 'vuex-router-sync'
 import titleMixin from '@util/title'
 import * as filters from '@util/filters'
-import mapping from '@/util/mapping'
-import tools from '@/util/tools'
+import mapping from '@util/mapping'
+import tools from '@util/tools'
 import Iview from '@util/iview'
 import 'view-design/dist/styles/iview.css'
-import '@/assets/css'
+import '@/assets/styles/index.styl'
 
 Vue.use(Iview)
 
